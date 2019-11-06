@@ -12,6 +12,7 @@ android {
         targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        ndk { abiFilters "armeabi-v7a" }
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
@@ -59,16 +60,14 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:${ver.retrofit}"
     implementation "com.squareup.retrofit2:converter-gson:${ver.retrofit}"
 
-    // Gson
-    implementation "com.google.code.gson:gson:${ver.gson}"
-
     // ARouter
     implementation "com.alibaba:arouter-api:${ver.arouter_api}"
     kapt "com.alibaba:arouter-compiler:${ver.arouter_compiler}"
 
-    // Test
+    implementation "com.tencent.tbs.tbssdk:sdk:${ver.tbssdk}"
+    implementation "com.google.code.gson:gson:${ver.gson}"
+
     testImplementation "junit:junit:${ver.junit}"
     androidTestImplementation "androidx.test:runner:${ver.runner}"
     androidTestImplementation "androidx.test.espresso:espresso-core:${ver.espresso}"
 }
-

@@ -9,10 +9,9 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import com.strategair.common.R
 
-
-class ClickableLayout @JvmOverloads
-constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0) :
-        RelativeLayout(context, attrs, defStyle) {
+class ClickableLayout
+@JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0)
+    : RelativeLayout(context, attrs, defStyle) {
 
     init {
         LayoutInflater.from(context).inflate(R.layout.layout_clickable_icons, this)
