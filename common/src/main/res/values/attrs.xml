@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ClickableLayout">
+        <attr name="text" />
+        <attr name="align_text_start" format="boolean" />
+        <attr name="icon_start" format="reference" />
+        <attr name="icon_end" format="reference" />
+    </declare-styleable>
+</resources>

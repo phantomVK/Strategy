@@ -38,10 +38,12 @@ dependencies {
     def ver = rootProject.ext.dependencies
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.google.android.material:material:1.0.0'
+
+    // Android
     implementation "androidx.appcompat:appcompat:${ver.androidx}"
     implementation "androidx.core:core-ktx:${ver.androidx}"
     implementation "androidx.recyclerview:recyclerview:${ver.recyclerview}"
+    implementation "com.google.android.material:material:1.0.0"
 
     // Glide
     implementation "com.github.bumptech.glide:glide:${ver.glide}"
