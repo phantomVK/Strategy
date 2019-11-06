@@ -1,0 +1,74 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
+dependencies {
+    def ver = rootProject.ext.dependencies
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "androidx.appcompat:appcompat:${ver.androidx}"
+    implementation "androidx.core:core-ktx:${ver.androidx}"
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation "androidx.recyclerview:recyclerview:${ver.recyclerview}"
+
+    // Glide
+    implementation "com.github.bumptech.glide:glide:${ver.glide}"
+    implementation "com.github.bumptech.glide:okhttp3-integration:${ver.glide}"
+    annotationProcessor "com.github.bumptech.glide:compiler:${ver.glide}"
+
+    // OkHttp
+    implementation "com.squareup.okio:okio:${ver.okio}"
+    implementation "com.squareup.okhttp3:okhttp:${ver.okhttp}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${ver.okhttp}"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:${ver.retrofit}"
+    implementation "com.squareup.retrofit2:converter-gson:${ver.retrofit}"
+
+    // Gson
+    implementation "com.google.code.gson:gson:${ver.gson}"
+
+    // ARouter
+    implementation "com.alibaba:arouter-api:${ver.arouter_api}"
+    kapt "com.alibaba:arouter-compiler:${ver.arouter_compiler}"
+
+    // Test
+    testImplementation "junit:junit:${ver.junit}"
+    androidTestImplementation "androidx.test:runner:${ver.runner}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${ver.espresso}"
+}
+
