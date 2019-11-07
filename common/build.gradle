@@ -38,34 +38,30 @@ kapt {
 dependencies {
     def ver = rootProject.ext.dependencies
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    api "androidx.appcompat:appcompat:${ver.androidx}"
+    api "androidx.constraintlayout:constraintlayout:${ver.constraintlayout}"
+    api "androidx.core:core-ktx:${ver.androidx}"
+    api "androidx.recyclerview:recyclerview:${ver.recyclerview}"
+    api "com.google.android.material:material:${ver.material}"
 
-    // Android
-    implementation "androidx.appcompat:appcompat:${ver.androidx}"
-    implementation "androidx.core:core-ktx:${ver.androidx}"
-    implementation "androidx.recyclerview:recyclerview:${ver.recyclerview}"
-    implementation "com.google.android.material:material:1.0.0"
+    api "com.github.bumptech.glide:glide:${ver.glide}"
+    api "com.github.bumptech.glide:okhttp3-integration:${ver.glide}"
+    kapt "com.github.bumptech.glide:compiler:${ver.glide}"
 
-    // Glide
-    implementation "com.github.bumptech.glide:glide:${ver.glide}"
-    implementation "com.github.bumptech.glide:okhttp3-integration:${ver.glide}"
-    annotationProcessor "com.github.bumptech.glide:compiler:${ver.glide}"
+    api "com.squareup.okio:okio:${ver.okio}"
+    api "com.squareup.okhttp3:okhttp:${ver.okhttp}"
+    api "com.squareup.okhttp3:logging-interceptor:${ver.okhttp}"
 
-    // OkHttp
-    implementation "com.squareup.okio:okio:${ver.okio}"
-    implementation "com.squareup.okhttp3:okhttp:${ver.okhttp}"
-    implementation "com.squareup.okhttp3:logging-interceptor:${ver.okhttp}"
+    api "com.squareup.retrofit2:retrofit:${ver.retrofit}"
+    api "com.squareup.retrofit2:converter-gson:${ver.retrofit}"
 
-    // Retrofit
-    implementation "com.squareup.retrofit2:retrofit:${ver.retrofit}"
-    implementation "com.squareup.retrofit2:converter-gson:${ver.retrofit}"
-
-    // ARouter
-    implementation "com.alibaba:arouter-api:${ver.arouter_api}"
+    api "com.alibaba:arouter-api:${ver.arouter_api}"
     kapt "com.alibaba:arouter-compiler:${ver.arouter_compiler}"
 
-    implementation "com.tencent.tbs.tbssdk:sdk:${ver.tbssdk}"
-    implementation "com.google.code.gson:gson:${ver.gson}"
+    api "com.tencent.tbs.tbssdk:sdk:${ver.tbssdk}"
+    api "com.google.code.gson:gson:${ver.gson}"
+    api "com.phantomvk.slideback:slideback:${ver.slideback}"
 
     testImplementation "junit:junit:${ver.junit}"
     androidTestImplementation "androidx.test:runner:${ver.runner}"
