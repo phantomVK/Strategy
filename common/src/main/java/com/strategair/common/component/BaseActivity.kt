@@ -34,18 +34,37 @@ open class BaseActivity : SlideActivity() {
         } else super.onOptionsItemSelected(item)
     }
 
-    private fun setWindowStyle() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.clearFlags(FLAG_TRANSLUCENT_STATUS)
-            window.decorView.systemUiVisibility = (SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    or SYSTEM_UI_FLAG_LAYOUT_STABLE
-                    or SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-                    or SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR)
-            window.addFlags(FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            window.statusBarColor = Color.TRANSPARENT
-            window.navigationBarColor = Color.WHITE
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            window.addFlags(FLAG_TRANSLUCENT_STATUS)
+   open fun setWindowStyle() {
+        when {
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.O -> {
+                window.decorView.systemUiVisibility = (SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        or SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        or SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                        or SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR)
+                window.addFlags(FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                window.statusBarColor = Color.TRANSPARENT
+                window.navigationBarColor = Color.WHITE
+            }
+
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.M -> {
+                window.decorView.systemUiVisibility = (SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        or SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        or SYSTEM_UI_FLAG_LIGHT_STATUS_BAR)
+                window.addFlags(FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                window.statusBarColor = Color.TRANSPARENT
+                window.navigationBarColor = Color.WHITE
+            }
+
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP -> {
+                window.decorView.systemUiVisibility = (SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        or SYSTEM_UI_FLAG_LAYOUT_STABLE)
+                window.addFlags(FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                window.navigationBarColor = Color.WHITE
+            }
+
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT -> {
+                window.addFlags(FLAG_TRANSLUCENT_STATUS)
+            }
         }
     }
 }
