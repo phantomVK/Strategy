@@ -9,17 +9,14 @@ import android.view.MotionEvent
 import android.view.View
 import com.strategair.common.R
 import com.strategair.common.service.sp
+import kotlin.math.floor
 
 class ListNavigatorView @JvmOverloads
-constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0)
-    : View(context, attrs, defStyle) {
+constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0) :
+    View(context, attrs, defStyle) {
 
-    private var mFontHeight = 0F
-    private var mCurrIndex = -1
-
-    private var mTextColor = 0
-    private var mTextColorPressed = 0
-    private var mTextSpanScale = 0F
+    private var mFontSpace = 0F
+    private var mOldIndex = -1
 
     private var mBackground = 0
     private var mBackgroundPressed = 0
@@ -32,70 +29,76 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0)
     init {
         val a = context.obtainStyledAttributes(attrs, R.styleable.ListNavigatorView)
         val textSize = a.getDimension(R.styleable.ListNavigatorView_textSize, sp(12F))
-        val textSizePressed = a.getFloat(R.styleable.ListNavigatorView_textSizePressed, sp(14.5F))
-        mTextColor = a.getColor(R.styleable.ListNavigatorView_textColor, -0xcc9a68)
-        mTextColorPressed = a.getColor(R.styleable.ListNavigatorView_textColorPressed, -0xcc6601)
-        mTextSpanScale = a.getFloat(R.styleable.ListNavigatorView_textSpanScale, 0.2F)
+        val textSizePressed = a.getDimension(R.styleable.ListNavigatorView_textSizePressed, sp(15F))
+        val textColor = a.getColor(R.styleable.ListNavigatorView_textColor, -0xcc9a68)
+        val textColorPressed = a.getColor(R.styleable.ListNavigatorView_textColorPressed, -0xcc6601)
+        val textSpanScale = a.getFloat(R.styleable.ListNavigatorView_textSpanScale, 0.2F)
         mBackground = a.getColor(R.styleable.ListNavigatorView_background, Color.TRANSPARENT)
         mBackgroundPressed = a.getColor(R.styleable.ListNavigatorView_backgroundPressed, 0x53d3d3d3)
         a.recycle()
 
         mPaint.isAntiAlias = true
         mPaint.textSize = textSize
-        mPaint.color = mTextColor
+        mPaint.color = textColor
 
         mPaintPressed.isAntiAlias = true
         mPaintPressed.textSize = textSizePressed
-        mPaintPressed.color = mTextColorPressed
+        mPaintPressed.color = textColorPressed
         mPaintPressed.isFakeBoldText = true
 
         val metrics = mPaint.fontMetrics
-        mFontHeight = (metrics.descent - metrics.ascent) * (1F + mTextSpanScale)
+        mFontSpace = (metrics.descent - metrics.ascent) * (1F + textSpanScale)
     }
 
     override fun onDraw(canvas: Canvas) {
-        if (mCharacters.isEmpty()) return
+        if (mCharacters.isEmpty()) {
+            if (isInEditMode) {
+                mCharacters.apply {
+                    add("!");add("A");add("B");add("C")
+                    add("D");add("E");add("F");add("#")
+                }
+            } else return
+        }
 
+        val w = measuredWidth shr 1
+        var yPos = getYPosition()
         for ((index, value) in mCharacters.withIndex()) {
-            val p = if (mCurrIndex == index) mPaintPressed else mPaint
-            val xPos = (measuredWidth shr 1) - p.measureText(value) / 2
-            val yPos = getTopPosition() + index * mFontHeight
-            canvas.drawText(value, xPos, yPos, p)
+            val p = if (mOldIndex == index) mPaintPressed else mPaint
+            canvas.drawText(value, w - p.measureText(value) / 2, yPos, p)
+            yPos += mFontSpace
         }
     }
 
     override fun dispatchTouchEvent(event: MotionEvent): Boolean {
-        if (mCharacters.isEmpty()) {
-            return super.dispatchTouchEvent(event)
-        }
+        if (mCharacters.isEmpty()) return super.dispatchTouchEvent(event)
 
-        if (event.action == MotionEvent.ACTION_UP || event.action == MotionEvent.ACTION_CANCEL) {
-            mCurrIndex = -1
+        val action = event.action
+        if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL) {
+            mOldIndex = -1
             mListener?.onTouch(this, null)
             setBackgroundColor(mBackground)
             return true
         }
 
-        val newIndex = ((event.y - getTopPosition()) / mFontHeight).toInt() + 1
-        if (newIndex != mCurrIndex && 0 <= newIndex && newIndex < mCharacters.size) {
-            mCurrIndex = newIndex
-            mListener?.onTouch(this, mCharacters[newIndex])
+        val newIndex = floor((event.y - getYPosition()) / mFontSpace).toInt() + 1
+        if (mOldIndex != newIndex && 0 <= newIndex && newIndex < mCharacters.size) {
+            mOldIndex = newIndex
+            mListener?.onTouch(this, mCharacters[mOldIndex])
             setBackgroundColor(mBackgroundPressed)
-        } else {
             invalidate()
         }
 
         return true
     }
 
-    private fun getTopPosition(): Float {
-        return (measuredHeight - mFontHeight * (mCharacters.size + mTextSpanScale)) / 2
+    private fun getYPosition(): Float {
+        return (measuredHeight - mFontSpace * mCharacters.size) / 2
     }
 
     fun clear() = mCharacters.clear()
     fun add(element: String) = mCharacters.add(element)
     fun addAll(elements: Collection<String>) = mCharacters.addAll(elements)
-    fun setListener(listener: OnTouchListener) = run { mListener = listener }
+    fun setListener(listener: OnTouchListener?) = run { mListener = listener }
 
     interface OnTouchListener {
         fun onTouch(view: View, string: String?)
