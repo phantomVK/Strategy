@@ -28,8 +28,8 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0) :
 
     init {
         val a = context.obtainStyledAttributes(attrs, R.styleable.ListNavigatorView)
-        val textSize = a.getDimension(R.styleable.ListNavigatorView_textSize, sp(12F))
-        val textSizePressed = a.getDimension(R.styleable.ListNavigatorView_textSizePressed, sp(15F))
+        val textSize = a.getDimension(R.styleable.ListNavigatorView_textSize, sp(12.5F))
+        val textSizePressed = a.getDimension(R.styleable.ListNavigatorView_textSizePressed, sp(16F))
         val textColor = a.getColor(R.styleable.ListNavigatorView_textColor, -0xcc9a68)
         val textColorPressed = a.getColor(R.styleable.ListNavigatorView_textColorPressed, -0xcc6601)
         val textSpanScale = a.getFloat(R.styleable.ListNavigatorView_textSpanScale, 0.2F)
@@ -52,12 +52,7 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0) :
 
     override fun onDraw(canvas: Canvas) {
         if (mCharacters.isEmpty()) {
-            if (isInEditMode) {
-                mCharacters.apply {
-                    add("!");add("A");add("B");add("C")
-                    add("D");add("E");add("F");add("#")
-                }
-            } else return
+            if (isInEditMode) inEditModePreview() else return
         }
 
         val w = measuredWidth shr 1
@@ -93,6 +88,16 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0) :
 
     private fun getYPosition(): Float {
         return (measuredHeight - mFontSpace * mCharacters.size) / 2
+    }
+
+    private fun inEditModePreview() {
+        setBackgroundColor(mBackgroundPressed)
+        mOldIndex = 7
+        mCharacters.apply {
+            add("#");add("A");add("B");add("C");add("D");add("E");add("F");add("G");add("H")
+            add("I");add("J");add("K");add("L");add("M");add("N");add("O");add("P");add("Q")
+            add("R");add("S");add("T");add("U");add("V");add("W");add("X");add("Y");add("Z")
+        }
     }
 
     fun clear() = mCharacters.clear()

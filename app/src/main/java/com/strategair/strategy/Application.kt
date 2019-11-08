@@ -1,17 +1,12 @@
 package com.strategair.strategy
 
 import androidx.multidex.MultiDexApplication
-import com.alibaba.android.arouter.launcher.ARouter
+import com.strategair.common.CommonManager
 
 class Application : MultiDexApplication() {
 
     override fun onCreate() {
         super.onCreate()
-
-        if (BuildConfig.DEBUG) {
-            ARouter.openLog()
-            ARouter.openDebug()
-        }
-        ARouter.init(this)
+        CommonManager.init(this)
     }
 }
