@@ -44,6 +44,7 @@ dependencies {
     api "androidx.core:core-ktx:${ver.androidx}"
     api "androidx.recyclerview:recyclerview:${ver.recyclerview}"
     api "com.google.android.material:material:${ver.material}"
+    api "com.google.code.gson:gson:${ver.gson}"
 
     api "com.github.bumptech.glide:glide:${ver.glide}"
     api "com.github.bumptech.glide:okhttp3-integration:${ver.glide}"
@@ -59,8 +60,9 @@ dependencies {
     api "com.alibaba:arouter-api:${ver.arouter_api}"
     kapt "com.alibaba:arouter-compiler:${ver.arouter_compiler}"
 
+    api "com.tencent:mmkv:${ver.mmkv}"
     api "com.tencent.tbs.tbssdk:sdk:${ver.tbssdk}"
-    api "com.google.code.gson:gson:${ver.gson}"
+
     api "com.phantomvk.slideback:slideback:${ver.slideback}"
 
     testImplementation "junit:junit:${ver.junit}"

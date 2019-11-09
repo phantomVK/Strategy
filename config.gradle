@@ -16,6 +16,7 @@ ext {
             gson            : '2.8.6',
             tbssdk          : '43697',
             slideback       : '0.3.3',
+            mmkv            : '1.0.23',
 
             okio            : '2.4.1',
             okhttp          : '4.2.2',

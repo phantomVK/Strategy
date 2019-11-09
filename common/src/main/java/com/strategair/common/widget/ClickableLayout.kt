@@ -10,8 +10,8 @@ import androidx.appcompat.widget.AppCompatTextView
 import com.strategair.common.R
 
 class ClickableLayout @JvmOverloads
-constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0) :
-    RelativeLayout(context, attrs, defStyle) {
+constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0)
+    : RelativeLayout(context, attrs, defStyle) {
 
     init {
         LayoutInflater.from(context).inflate(R.layout.layout_clickable_icons, this)
@@ -28,8 +28,8 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0) :
             divider.layoutParams = p
         }
         textView.text = a.getString(R.styleable.ClickableLayout_text)
-        iconStart.setImageResource(a.getResourceId(R.styleable.ClickableLayout_drawableStart, 0))
-        iconEnd.setImageResource(a.getResourceId(R.styleable.ClickableLayout_drawableEnd, 0))
+        iconStart.setImageDrawable(a.getDrawable(R.styleable.ClickableLayout_drawableStart))
+        iconEnd.setImageDrawable(a.getDrawable(R.styleable.ClickableLayout_drawableEnd))
         a.recycle()
     }
 }

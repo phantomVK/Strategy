@@ -1,12 +1,12 @@
 package com.strategair.common.component
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.strategair.common.R
@@ -17,8 +17,9 @@ import com.tencent.smtt.sdk.WebSettings
 import com.tencent.smtt.sdk.WebView
 import com.tencent.smtt.sdk.WebViewClient
 import kotlinx.android.synthetic.main.activity_web_view.*
+import kotlinx.android.synthetic.main.view_toolbar.*
 
-class WebViewActivity : BaseActivity() {
+class WebViewActivity : ImmersiveActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,17 +85,10 @@ class WebViewActivity : BaseActivity() {
         private const val EXTRA_TITLE = "TITLE"
         private const val ABOUT_BLANK = "about:blank"
 
-        fun startActivity(activity: Activity, url: String) {
+        fun startActivity(activity: AppCompatActivity, url: String) {
             Intent(activity, WebViewActivity::class.java)
-                    .putExtra(EXTRA_URL, url)
-                    .run { activity.startActivity(this) }
-        }
-
-        fun startActivity(activity: Activity, url: String, title: String) {
-            Intent(activity, WebViewActivity::class.java)
-                    .putExtra(EXTRA_URL, url)
-                    .putExtra(EXTRA_TITLE, title)
-                    .run { activity.startActivity(this) }
+                .putExtra(EXTRA_URL, url)
+                .run { activity.startActivity(this) }
         }
     }
 
@@ -106,22 +100,19 @@ class WebViewActivity : BaseActivity() {
         }
 
         override fun onProgressChanged(WebView: WebView, newProgress: Int) {
-            if (newProgress in 1..99) {
+            if (newProgress in 0..100) {
                 progressBar.progress = newProgress
-                progressBar.isVisible = true
-            } else {
-                progressBar.isVisible = false
             }
         }
     }
 
-    class XWebViewClient : WebViewClient() {
+    inner class XWebViewClient : WebViewClient() {
         override fun onPageStarted(view: WebView, url: String, favicon: Bitmap?) {
-            super.onPageStarted(view, url, favicon)
+            progressBar.isVisible = true
         }
 
         override fun onPageFinished(view: WebView, p1: String) {
-            super.onPageFinished(view, p1)
+            progressBar.isVisible = false
         }
 
         override fun onReceivedSslError(view: WebView, handler: SslErrorHandler, error: SslError) {
@@ -132,18 +123,26 @@ class WebViewActivity : BaseActivity() {
             return super.shouldOverrideUrlLoading(view, request)
         }
 
-        override fun onReceivedError(view: WebView, request: WebResourceRequest, error: WebResourceError) {
+        override fun onReceivedError(
+            view: WebView, request: WebResourceRequest,
+            error: WebResourceError
+        ) {
             super.onReceivedError(view, request, error)
         }
 
-        override fun onReceivedHttpError(view: WebView, resourceRequest: WebResourceRequest, response: WebResourceResponse) {
+        override fun onReceivedHttpError(
+            view: WebView, resourceRequest: WebResourceRequest,
+            response: WebResourceResponse
+        ) {
             super.onReceivedHttpError(view, resourceRequest, response)
         }
     }
 
     class XDownloadListener : com.tencent.smtt.sdk.DownloadListener {
-        override fun onDownloadStart(url: String, userAgent: String, contentDisposition: String,
-                                     mimetype: String, contentLength: Long) {
+        override fun onDownloadStart(
+            url: String, userAgent: String, contentDisposition: String,
+            mimetype: String, contentLength: Long
+        ) {
         }
     }
 }
