@@ -14,7 +14,6 @@ object CommonManager {
             ARouter.openDebug()
         }
         ARouter.init(application)
-
         MMKV.initialize(application)
         QbSdk.initX5Environment(application, null)
     }

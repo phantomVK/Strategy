@@ -4,14 +4,15 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion rootProject.ext.android.compileSdkVersion
-    buildToolsVersion rootProject.ext.android.buildToolsVersion
+    def extAndroid = rootProject.ext.android
+    compileSdkVersion extAndroid.compileSdkVersion
+    buildToolsVersion extAndroid.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion rootProject.ext.android.minSdkVersion
-        targetSdkVersion rootProject.ext.android.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion extAndroid.minSdkVersion
+        targetSdkVersion extAndroid.targetSdkVersion
+        versionCode extAndroid.versionCode
+        versionName extAndroid.versionName
         ndk { abiFilters "armeabi", "armeabi-v7a" }
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -19,7 +20,7 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

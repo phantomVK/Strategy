@@ -12,10 +12,8 @@ import androidx.core.view.isVisible
 import com.strategair.common.R
 import com.strategair.common.service.tintDrawable
 import com.tencent.smtt.export.external.interfaces.*
-import com.tencent.smtt.sdk.WebChromeClient
 import com.tencent.smtt.sdk.WebSettings
 import com.tencent.smtt.sdk.WebView
-import com.tencent.smtt.sdk.WebViewClient
 import kotlinx.android.synthetic.main.activity_web_view.*
 import kotlinx.android.synthetic.main.view_toolbar.*
 
@@ -37,18 +35,17 @@ class WebViewActivity : ImmersiveActivity() {
     @Suppress("DEPRECATION")
     @SuppressLint("SetJavaScriptEnabled")
     private fun initWebView() {
-        webView.webChromeClient = XWebChromeClient()
-        webView.webViewClient = XWebViewClient()
-        webView.setDownloadListener(XDownloadListener())
+        webView.webChromeClient = WebChromeClient()
+        webView.webViewClient = WebViewClient()
+        webView.setDownloadListener(DownloadListener())
         webView.settings.apply {
             javaScriptEnabled = true
             domStorageEnabled = true
-            domStorageEnabled = true
             databaseEnabled = true
             cacheMode = WebSettings.LOAD_DEFAULT
-
             savePassword = false
             allowFileAccess = false
+            setAppCacheEnabled(true)
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 mixedContentMode = android.webkit.WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
@@ -92,21 +89,17 @@ class WebViewActivity : ImmersiveActivity() {
         }
     }
 
-    inner class XWebChromeClient : WebChromeClient() {
+    inner class WebChromeClient : com.tencent.smtt.sdk.WebChromeClient() {
         override fun onReceivedTitle(view: WebView, title: String) {
-            if (title.isNotEmpty() && !title.startsWith("http")) {
-                toolbar.title = title
-            }
+            toolbar.title = title
         }
 
         override fun onProgressChanged(WebView: WebView, newProgress: Int) {
-            if (newProgress in 0..100) {
-                progressBar.progress = newProgress
-            }
+            progressBar.progress = newProgress
         }
     }
 
-    inner class XWebViewClient : WebViewClient() {
+    inner class WebViewClient : com.tencent.smtt.sdk.WebViewClient() {
         override fun onPageStarted(view: WebView, url: String, favicon: Bitmap?) {
             progressBar.isVisible = true
         }
@@ -123,26 +116,20 @@ class WebViewActivity : ImmersiveActivity() {
             return super.shouldOverrideUrlLoading(view, request)
         }
 
-        override fun onReceivedError(
-            view: WebView, request: WebResourceRequest,
-            error: WebResourceError
-        ) {
+        override fun onReceivedError(view: WebView, request: WebResourceRequest,
+                                     error: WebResourceError) {
             super.onReceivedError(view, request, error)
         }
 
-        override fun onReceivedHttpError(
-            view: WebView, resourceRequest: WebResourceRequest,
-            response: WebResourceResponse
-        ) {
+        override fun onReceivedHttpError(view: WebView, resourceRequest: WebResourceRequest,
+                                         response: WebResourceResponse) {
             super.onReceivedHttpError(view, resourceRequest, response)
         }
     }
 
-    class XDownloadListener : com.tencent.smtt.sdk.DownloadListener {
-        override fun onDownloadStart(
-            url: String, userAgent: String, contentDisposition: String,
-            mimetype: String, contentLength: Long
-        ) {
+    inner class DownloadListener : com.tencent.smtt.sdk.DownloadListener {
+        override fun onDownloadStart(url: String, userAgent: String, contentDisposition: String,
+                                     mimetype: String, contentLength: Long) {
         }
     }
 }
