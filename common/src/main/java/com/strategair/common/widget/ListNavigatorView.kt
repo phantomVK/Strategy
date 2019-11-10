@@ -12,8 +12,7 @@ import com.strategair.common.service.sp
 import kotlin.math.floor
 
 class ListNavigatorView @JvmOverloads
-constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0) :
-    View(context, attrs, defStyle) {
+constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0) : View(context, attrs, defStyle) {
 
     private var mFontSpace = 0F
     private var mOldIndex = -1
@@ -24,7 +23,8 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0) :
     private val mPaint = Paint()
     private val mPaintPressed = Paint()
     private val mCharacters = mutableListOf<String>()
-    private var mListener: OnTouchListener? = null
+
+    var listener: OnTouchListener? = null
 
     init {
         val a = context.obtainStyledAttributes(attrs, R.styleable.ListNavigatorView)
@@ -51,9 +51,7 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0) :
     }
 
     override fun onDraw(canvas: Canvas) {
-        if (mCharacters.isEmpty()) {
-            if (isInEditMode) inEditModePreview() else return
-        }
+        if (mCharacters.isEmpty()) return
 
         val w = measuredWidth shr 1
         var yPos = getYPosition()
@@ -70,7 +68,7 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0) :
         val action = event.action
         if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL) {
             mOldIndex = -1
-            mListener?.onTouch(this, null)
+            listener?.onTouch(this, null)
             setBackgroundColor(mBackground)
             return true
         }
@@ -78,7 +76,7 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0) :
         val newIndex = floor((event.y - getYPosition()) / mFontSpace).toInt() + 1
         if (mOldIndex != newIndex && 0 <= newIndex && newIndex < mCharacters.size) {
             mOldIndex = newIndex
-            mListener?.onTouch(this, mCharacters[mOldIndex])
+            listener?.onTouch(this, mCharacters[mOldIndex])
             setBackgroundColor(mBackgroundPressed)
             invalidate()
         }
@@ -90,20 +88,22 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0) :
         return (measuredHeight - mFontSpace * mCharacters.size) / 2
     }
 
-    private fun inEditModePreview() {
-        setBackgroundColor(mBackgroundPressed)
-        mOldIndex = 7
-        mCharacters.apply {
-            add("#");add("A");add("B");add("C");add("D");add("E");add("F");add("G");add("H")
-            add("I");add("J");add("K");add("L");add("M");add("N");add("O");add("P");add("Q")
-            add("R");add("S");add("T");add("U");add("V");add("W");add("X");add("Y");add("Z")
-        }
-    }
+//    private fun inEditModePreview() {
+//        setBackgroundColor(mBackgroundPressed)
+//        mOldIndex = 7
+//        mCharacters.apply {
+//            add("#");add("A");add("B");add("C");add("D");add("E");add("F");add("G");add("H")
+//            add("I");add("J");add("K");add("L");add("M");add("N");add("O");add("P");add("Q")
+//            add("R");add("S");add("T");add("U");add("V");add("W");add("X");add("Y");add("Z")
+//        }
+//    }
 
     fun clear() = mCharacters.clear()
     fun add(element: String) = mCharacters.add(element)
-    fun addAll(elements: Collection<String>) = mCharacters.addAll(elements)
-    fun setListener(listener: OnTouchListener?) = run { mListener = listener }
+    fun addAll(elements: Collection<String>) {
+        invalidate()
+        mCharacters.addAll(elements)
+    }
 
     interface OnTouchListener {
         fun onTouch(view: View, string: String?)
