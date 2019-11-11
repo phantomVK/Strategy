@@ -1,12 +1,12 @@
 package com.strategair.common.component
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.strategair.common.R
@@ -81,10 +81,10 @@ class WebViewActivity : ImmersiveActivity() {
         private const val EXTRA_URL = "URL"
         private const val ABOUT_BLANK = "about:blank"
 
-        fun startActivity(activity: AppCompatActivity, url: String) {
-            Intent(activity, WebViewActivity::class.java)
+        fun startActivity(context: Context, url: String) {
+            Intent(context, WebViewActivity::class.java)
                 .putExtra(EXTRA_URL, url)
-                .run { activity.startActivity(this) }
+                .run { context.startActivity(this) }
         }
     }
 
