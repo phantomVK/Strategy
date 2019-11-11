@@ -79,7 +79,6 @@ class WebViewActivity : ImmersiveActivity() {
 
     companion object {
         private const val EXTRA_URL = "URL"
-        private const val EXTRA_TITLE = "TITLE"
         private const val ABOUT_BLANK = "about:blank"
 
         fun startActivity(activity: AppCompatActivity, url: String) {

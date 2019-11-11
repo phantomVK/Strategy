@@ -13,7 +13,6 @@ android {
         targetSdkVersion extAndroid.targetSdkVersion
         versionCode extAndroid.versionCode
         versionName extAndroid.versionName
-        ndk { abiFilters "armeabi", "armeabi-v7a" }
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'

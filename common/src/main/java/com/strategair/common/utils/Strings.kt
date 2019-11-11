@@ -1,12 +1,11 @@
 package com.strategair.common.utils
 
 import android.text.Spannable
-import android.text.SpannableStringBuilder
+import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import androidx.annotation.ColorInt
 
-fun highlight(builder: SpannableStringBuilder, source: String,
-              key: String, @ColorInt color: Int): CharSequence {
+fun highlight(builder: SpannableString, source: String, key: String, @ColorInt color: Int): CharSequence {
     var start = source.indexOf(key, 0, true)
     val length = key.length
     while (start > -1) {
@@ -19,11 +18,11 @@ fun highlight(builder: SpannableStringBuilder, source: String,
 }
 
 fun highlight(source: String, key: String, @ColorInt color: Int): CharSequence {
-    return highlight(SpannableStringBuilder(source), source, key, color)
+    return highlight(SpannableString(source), source, key, color)
 }
 
 fun highlight(source: String, keys: Collection<String>, @ColorInt color: Int): CharSequence {
-    val builder = SpannableStringBuilder(source)
+    val builder = SpannableString(source)
     keys.forEach { key -> highlight(builder, source, key, color) }
     return builder
 }

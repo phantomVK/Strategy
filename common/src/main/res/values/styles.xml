@@ -21,4 +21,11 @@
         <item name="contentInsetStartWithNavigation">0dp</item>
         <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
     </style>
+
+    <style name="TabLayout" parent="Base.Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">#4286f4</item>
+        <item name="tabIndicatorHeight">2dp</item>
+        <item name="android:textColor">#9b9b9b</item>
+        <item name="tabSelectedTextColor">#4286f4</item>
+    </style>
 </resources>

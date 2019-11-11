@@ -1,52 +1,36 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
-
 android {
     def extAndroid = rootProject.ext.android
     compileSdkVersion extAndroid.compileSdkVersion
     buildToolsVersion extAndroid.buildToolsVersion
 
     defaultConfig {
-        applicationId "com.strategair.strategy"
         minSdkVersion extAndroid.minSdkVersion
         targetSdkVersion extAndroid.targetSdkVersion
         versionCode extAndroid.versionCode
         versionName extAndroid.versionName
-        ndk { abiFilters "armeabi-v7a" }
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
     }
+
     buildTypes {
         release {
-            minifyEnabled true
-            shrinkResources true
-            zipAlignEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-}
 
-kapt {
-    arguments {
-        arg("AROUTER_MODULE_NAME", project.getName())
-    }
 }
 
 dependencies {
     def ver = rootProject.ext.dependencies
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.multidex:multidex:2.0.1'
-    api "androidx.appcompat:appcompat:${ver.androidx}"
-    api "androidx.constraintlayout:constraintlayout:${ver.constraintlayout}"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     implementation project(":common")
-    implementation project(":search")
 
     testImplementation "junit:junit:${ver.junit}"
     androidTestImplementation "androidx.test:runner:${ver.runner}"

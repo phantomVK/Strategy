@@ -15,11 +15,7 @@ open class BaseActivity : SlideActivity() {
 
     override fun onContentChanged() {
         super.onContentChanged()
-
-        findViewById<Toolbar>(R.id.toolbar)?.apply {
-            setSupportActionBar(this)
-            supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        }
+        initToolbar()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -32,5 +28,12 @@ open class BaseActivity : SlideActivity() {
     override fun finish() {
         super.finish()
         if (!slideBackDisable()) overridePendingTransition(0, R.anim.slide_out_right)
+    }
+
+    protected open fun initToolbar() {
+        findViewById<Toolbar>(R.id.toolbar)?.apply {
+            setSupportActionBar(this)
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        }
     }
 }
