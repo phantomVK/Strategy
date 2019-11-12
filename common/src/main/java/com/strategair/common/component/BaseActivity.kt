@@ -22,7 +22,9 @@ open class BaseActivity : SlideActivity() {
         return if (item.itemId == android.R.id.home) {
             onBackPressed()
             true
-        } else super.onOptionsItemSelected(item)
+        } else {
+            super.onOptionsItemSelected(item)
+        }
     }
 
     override fun finish() {

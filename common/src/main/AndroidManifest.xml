@@ -6,7 +6,11 @@
         <activity
             android:name=".component.WebViewActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@style/AppThemeX"
+            android:theme="@style/AppThemeCommon"
             android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name=".component.FileReaderActivity"
+            android:theme="@style/AppThemeCommon" />
     </application>
 </manifest>

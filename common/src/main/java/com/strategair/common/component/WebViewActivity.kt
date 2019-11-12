@@ -111,6 +111,10 @@ class WebViewActivity : ImmersiveActivity() {
             super.onReceivedSslError(view, handler, error)
         }
 
+        override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
+            return super.shouldOverrideUrlLoading(view, url)
+        }
+
         override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {
             return super.shouldOverrideUrlLoading(view, request)
         }
