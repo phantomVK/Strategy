@@ -64,6 +64,7 @@ dependencies {
     api "com.tencent.tbs.tbssdk:sdk:${ver.tbssdk}"
 
     api "com.phantomvk.slideback:slideback:${ver.slideback}"
+    api "com.davemorrissey.labs:subsampling-scale-image-view:${ver.scale_image_view}"
 
     testImplementation "junit:junit:${ver.junit}"
     androidTestImplementation "androidx.test:runner:${ver.runner}"

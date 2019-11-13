@@ -5,13 +5,15 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.strategair.common.R
 import com.strategair.common.service.tintDrawable
-import com.tencent.smtt.export.external.interfaces.*
+import com.strategair.common.utils.getApplicationLabel
 import com.tencent.smtt.sdk.WebSettings
 import com.tencent.smtt.sdk.WebView
 import kotlinx.android.synthetic.main.activity_web_view.*
@@ -47,6 +49,7 @@ class WebViewActivity : ImmersiveActivity() {
             allowFileAccess = false
             setAppCacheEnabled(true)
 
+            // Allow both HTTP and HTTPS resource.
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 mixedContentMode = android.webkit.WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
             }
@@ -54,18 +57,20 @@ class WebViewActivity : ImmersiveActivity() {
     }
 
     override fun onResume() {
-        super.onResume()
         webView.onResume()
+        webView.resumeTimers()
+        super.onResume()
     }
 
     override fun onPause() {
-        super.onPause()
         webView.onPause()
+        webView.pauseTimers()
+        super.onPause()
     }
 
     override fun onDestroy() {
-        super.onDestroy()
         webView.destroy()
+        super.onDestroy()
     }
 
     override fun onBackPressed() {
@@ -107,26 +112,21 @@ class WebViewActivity : ImmersiveActivity() {
             progressBar.isVisible = false
         }
 
-        override fun onReceivedSslError(view: WebView, handler: SslErrorHandler, error: SslError) {
-            super.onReceivedSslError(view, handler, error)
-        }
-
-        override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
-            return super.shouldOverrideUrlLoading(view, url)
-        }
-
-        override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {
-            return super.shouldOverrideUrlLoading(view, request)
-        }
-
-        override fun onReceivedError(view: WebView, request: WebResourceRequest,
-                                     error: WebResourceError) {
-            super.onReceivedError(view, request, error)
-        }
-
-        override fun onReceivedHttpError(view: WebView, resourceRequest: WebResourceRequest,
-                                         response: WebResourceResponse) {
-            super.onReceivedHttpError(view, resourceRequest, response)
+        override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
+            return if (url.startsWith("tel:")) {
+                startActivity(Intent(Intent.ACTION_DIAL, Uri.parse(url)))
+                true
+            } else if (!url.startsWith("http://") && !url.startsWith("https://")) {
+                val i = Intent(Intent.ACTION_VIEW).setData(Uri.parse(url))
+                val n = i.resolveActivity(packageManager)
+                if (n != null) {
+                    val label = getApplicationLabel(n.packageName)
+                    Log.i("WebViewClient", "Received label:${label}")
+                }
+                true
+            } else {
+                super.shouldOverrideUrlLoading(view, url)
+            }
         }
     }
 

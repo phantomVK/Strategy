@@ -17,6 +17,7 @@ ext {
             glide           : '4.10.0',
             gson            : '2.8.6',
             slideback       : '0.3.3',
+            scale_image_view: '3.10.0',
 
             tbssdk          : '43697',
             mmkv            : '1.0.23',
