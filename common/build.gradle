@@ -77,9 +77,9 @@ dependencies {
     api "com.davemorrissey.labs:subsampling-scale-image-view:${ver.scale_image_view}"
 
     api "org.greenrobot:eventbus:${ver.eventbus}"
-    kapt "org.greenrobot:eventbus-annotation-processor:${ver.eventbus_compiler}"
+    kapt "org.greenrobot:eventbus-annotation-processor:${ver.eventbus}"
 
-    testImplementation "junit:junit:${ver.junit}"
+    androidTestImplementation "androidx.test.ext:junit:${ver.junit}"
     androidTestImplementation "androidx.test:runner:${ver.runner}"
     androidTestImplementation "androidx.test.espresso:espresso-core:${ver.espresso}"
 }

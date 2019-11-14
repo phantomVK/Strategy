@@ -9,26 +9,27 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import com.strategair.strategy.common.R
 
-class ClickableLayout @JvmOverloads
+class DrawableClickableLayout @JvmOverloads
 constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0)
     : RelativeLayout(context, attrs, defStyle) {
 
     init {
-        LayoutInflater.from(context).inflate(R.layout.layout_clickable, this)
+        LayoutInflater.from(context).inflate(R.layout.layout_clickable_icons, this)
 
         val divider = findViewById<View>(R.id.divider)
+        val iconStart = findViewById<AppCompatImageView>(R.id.iconStart)
         val iconEnd = findViewById<AppCompatImageView>(R.id.iconEnd)
         val textView = findViewById<AppCompatTextView>(R.id.text)
 
-        val a = context.obtainStyledAttributes(attrs, R.styleable.ClickableLayout)
-        if (a.getBoolean(R.styleable.ClickableLayout_alignTextStart, false)) {
+        val a = context.obtainStyledAttributes(attrs, R.styleable.DrawableClickableLayout)
+        if (a.getBoolean(R.styleable.DrawableClickableLayout_alignTextStart, false)) {
             val p = divider.layoutParams as LayoutParams
             p.addRule(ALIGN_START, R.id.text)
             divider.layoutParams = p
         }
-        textView.text = a.getString(R.styleable.ClickableLayout_text)
-        iconEnd.setImageDrawable(a.getDrawable(R.styleable.ClickableLayout_drawableEnd))
-        setBackgroundResource(R.drawable.selector_clickable)
+        textView.text = a.getString(R.styleable.DrawableClickableLayout_text)
+        iconStart.setImageDrawable(a.getDrawable(R.styleable.DrawableClickableLayout_drawableStart))
+        iconEnd.setImageDrawable(a.getDrawable(R.styleable.DrawableClickableLayout_drawableEnd))
         a.recycle()
     }
 }

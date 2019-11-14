@@ -69,10 +69,8 @@
 
     <View
         android:id="@+id/divider"
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:layout_below="@+id/tabLayout"
-        android:background="#d8d8d8" />
+        style="@style/DividerStyle"
+        android:layout_below="@+id/tabLayout" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"

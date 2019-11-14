@@ -29,7 +29,7 @@ android {
 
 kapt {
     arguments {
-        arg('eventBusIndex', 'com.strategair.strategy.search.MyEventBusIndex')
+        arg('eventBusIndex', 'com.strategair.strategy.me.MyEventBusIndex')
     }
 }
 

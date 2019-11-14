@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ebebeb"
+    android:orientation="vertical"
+    tools:context=".view.SettingsActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/ToolbarStyle" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.strategair.strategy.common.widget.SpaceLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.strategair.strategy.common.widget.ClickableLayout
+                android:id="@+id/privacy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_clickable"
+                app:drawableEnd="@drawable/icon_enter"
+                app:text="@string/privacy" />
+
+            <com.strategair.strategy.common.widget.ClickableLayout
+                android:id="@+id/general"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_clickable"
+                app:drawableEnd="@drawable/icon_enter"
+                app:text="@string/general" />
+
+            <com.strategair.strategy.common.widget.SpaceLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.strategair.strategy.common.widget.ClickableLayout
+                android:id="@+id/aboutUs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:drawableEnd="@drawable/icon_enter"
+                app:text="@string/about_us" />
+
+            <com.strategair.strategy.common.widget.ClickableLayout
+                android:id="@+id/help"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:alignTextStart="true"
+                app:drawableEnd="@drawable/icon_enter"
+                app:text="@string/help_and_feedback" />
+
+            <com.strategair.strategy.common.widget.SpaceLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.strategair.strategy.common.widget.ClickableLayout
+                android:id="@+id/switchAccount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:drawableEnd="@drawable/icon_enter"
+                app:text="@string/switch_account" />
+
+            <com.strategair.strategy.common.widget.ClickableLayout
+                android:id="@+id/exit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:alignTextStart="true"
+                app:drawableEnd="@drawable/icon_enter"
+                app:text="@string/logout" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

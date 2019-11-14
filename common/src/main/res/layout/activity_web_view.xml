@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".component.WebViewActivity">
 
-    <include layout="@layout/view_toolbar" />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/ToolbarStyle" />
 
     <com.tencent.smtt.sdk.WebView
         android:id="@+id/webView"

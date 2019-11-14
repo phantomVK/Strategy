@@ -1,0 +1,11 @@
+<resources>
+    <string name="settings">设置</string>
+
+    <!--  SettingsActivity  -->
+    <string name="privacy">隐私</string>
+    <string name="general">通用</string>
+    <string name="about_us">关于我们</string>
+    <string name="help_and_feedback">帮助与反馈</string>
+    <string name="switch_account">切换账号</string>
+    <string name="logout">退出登录</string>
+</resources>

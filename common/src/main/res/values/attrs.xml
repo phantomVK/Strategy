@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <attr name="text" format="string" />
+    <attr name="alignTextStart" format="boolean" />
+
     <declare-styleable name="ClickableLayout">
+        <attr name="text" />
+        <attr name="drawableEnd" />
+        <attr name="alignTextStart" />
+    </declare-styleable>
+
+    <declare-styleable name="DrawableClickableLayout">
         <attr name="text" />
         <attr name="drawableStart" />
         <attr name="drawableEnd" />
-        <attr name="alignTextStart" format="boolean" />
+        <attr name="alignTextStart" />
     </declare-styleable>
 
     <declare-styleable name="ListNavigatorView">

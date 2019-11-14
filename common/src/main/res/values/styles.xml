@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="AppThemeCommon" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorControlNormal">@android:color/white</item>
+        <item name="colorControlNormal">@color/colorTheme</item>// Navigation back icon.
         <item name="android:windowAnimationStyle">@style/WindowNoAnimStyle</item>
     </style>
 
@@ -15,17 +15,26 @@
     </style>
 
     <style name="ToolbarStyle" parent="Widget.AppCompat.Toolbar">
+        <item name="android:theme">@style/AppThemeCommon</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@android:color/white</item>
         <item name="contentInsetStartWithNavigation">0dp</item>
         <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:elevation" tools:ignore="NewApi">1dp</item>
     </style>
 
     <style name="TabLayout" parent="Base.Widget.Design.TabLayout">
-        <item name="tabIndicatorColor">#4286f4</item>
+        <item name="tabIndicatorColor">@color/colorTheme</item>
         <item name="tabIndicatorHeight">2dp</item>
         <item name="android:textColor">#9b9b9b</item>
-        <item name="tabSelectedTextColor">#4286f4</item>
+        <item name="tabSelectedTextColor">@color/colorTheme</item>
+    </style>
+
+    <style name="DividerStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">@color/colorDivider</item>
     </style>
 </resources>

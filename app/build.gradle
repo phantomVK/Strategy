@@ -48,16 +48,8 @@ dependencies {
     def ver = rootProject.ext.dependencies
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.multidex:multidex:2.0.1'
-    api "androidx.appcompat:appcompat:${ver.androidx}"
-    api "androidx.constraintlayout:constraintlayout:${ver.constraintlayout}"
-
-    api "org.greenrobot:eventbus:${ver.eventbus}"
-    kapt "org.greenrobot:eventbus-annotation-processor:${ver.eventbus_compiler}"
 
     implementation project(":common")
     implementation project(":search")
-
-    testImplementation "junit:junit:${ver.junit}"
-    androidTestImplementation "androidx.test:runner:${ver.runner}"
-    androidTestImplementation "androidx.test.espresso:espresso-core:${ver.espresso}"
+    implementation project(":me")
 }

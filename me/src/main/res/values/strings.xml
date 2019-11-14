@@ -1,0 +1,11 @@
+<resources>
+    <string name="settings">Settings</string>
+
+    <!--  SettingsActivity  -->
+    <string name="privacy">Privacy</string>
+    <string name="general">General</string>
+    <string name="about_us">About us</string>
+    <string name="help_and_feedback">Help and feedback</string>
+    <string name="switch_account">Switch account</string>
+    <string name="logout">Logout</string>
+</resources>
