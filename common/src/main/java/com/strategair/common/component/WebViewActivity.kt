@@ -24,14 +24,14 @@ class WebViewActivity : ImmersiveActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_web_view)
-        setNavigationIcon()
-        initWebView()
-        webView.loadUrl(intent.getStringExtra(EXTRA_URL))
-    }
 
-    private fun setNavigationIcon() {
-        val d = ContextCompat.getDrawable(this, R.drawable.icon_close)
-        toolbar.navigationIcon = d?.tintDrawable(Color.BLACK)
+        // Navigation icon
+        ContextCompat.getDrawable(this, R.drawable.icon_close)
+            ?.tintDrawable(Color.BLACK)
+            ?.let { toolbar.navigationIcon = it }
+
+        initWebView()
+        webView.loadUrl(intent.getStringExtra(URL))
     }
 
     @Suppress("DEPRECATION")
@@ -83,12 +83,11 @@ class WebViewActivity : ImmersiveActivity() {
     }
 
     companion object {
-        private const val EXTRA_URL = "URL"
-        private const val ABOUT_BLANK = "about:blank"
+        private const val URL = "URL"
 
         fun startActivity(context: Context, url: String) {
             Intent(context, WebViewActivity::class.java)
-                .putExtra(EXTRA_URL, url)
+                .putExtra(URL, url)
                 .run { context.startActivity(this) }
         }
     }

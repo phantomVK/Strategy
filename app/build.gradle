@@ -34,8 +34,15 @@ android {
 
 kapt {
     arguments {
-        arg("AROUTER_MODULE_NAME", project.getName())
+        arg('eventBusIndex', 'com.strategair.strategy.MyEventBusIndex')
     }
+}
+
+kapt {
+    arguments {
+        arg('AROUTER_MODULE_NAME', project.getName())
+    }
+    generateStubs = true
 }
 
 dependencies {
@@ -44,6 +51,9 @@ dependencies {
     implementation 'androidx.multidex:multidex:2.0.1'
     api "androidx.appcompat:appcompat:${ver.androidx}"
     api "androidx.constraintlayout:constraintlayout:${ver.constraintlayout}"
+
+    api "org.greenrobot:eventbus:${ver.eventbus}"
+    kapt "org.greenrobot:eventbus-annotation-processor:${ver.eventbus_compiler}"
 
     implementation project(":common")
     implementation project(":search")

@@ -31,8 +31,15 @@ android {
 
 kapt {
     arguments {
-        arg("AROUTER_MODULE_NAME", project.getName())
+        arg('eventBusIndex', 'com.strategair.common.MyEventBusIndex')
     }
+}
+
+kapt {
+    arguments {
+        arg('AROUTER_MODULE_NAME', project.getName())
+    }
+    generateStubs = true
 }
 
 dependencies {
@@ -45,6 +52,7 @@ dependencies {
     api "androidx.recyclerview:recyclerview:${ver.recyclerview}"
     api "com.google.android.material:material:${ver.material}"
     api "com.google.code.gson:gson:${ver.gson}"
+    kapt "android.arch.persistence.room:compiler:${ver.room_compiler}"
 
     api "com.github.bumptech.glide:glide:${ver.glide}"
     api "com.github.bumptech.glide:okhttp3-integration:${ver.glide}"
@@ -62,9 +70,14 @@ dependencies {
 
     api "com.tencent:mmkv:${ver.mmkv}"
     api "com.tencent.tbs.tbssdk:sdk:${ver.tbssdk}"
+    api "com.tencent.wcdb:wcdb-android:${ver.wcdb}"
+    api "com.tencent.wcdb:room:${ver.wcdb}"
 
     api "com.phantomvk.slideback:slideback:${ver.slideback}"
     api "com.davemorrissey.labs:subsampling-scale-image-view:${ver.scale_image_view}"
+
+    api "org.greenrobot:eventbus:${ver.eventbus}"
+    kapt "org.greenrobot:eventbus-annotation-processor:${ver.eventbus_compiler}"
 
     testImplementation "junit:junit:${ver.junit}"
     androidTestImplementation "androidx.test:runner:${ver.runner}"
