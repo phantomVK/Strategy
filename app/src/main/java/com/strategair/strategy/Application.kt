@@ -1,7 +1,7 @@
 package com.strategair.strategy
 
 import androidx.multidex.MultiDexApplication
-import com.strategair.common.CommonManager
+import com.strategair.strategy.common.CommonManager
 
 class Application : MultiDexApplication() {
 

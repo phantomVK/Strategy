@@ -2,7 +2,7 @@ package com.strategair.strategy
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.strategair.common.component.WebViewActivity
+import com.strategair.strategy.common.component.WebViewActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

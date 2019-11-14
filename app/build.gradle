@@ -42,7 +42,6 @@ kapt {
     arguments {
         arg('AROUTER_MODULE_NAME', project.getName())
     }
-    generateStubs = true
 }
 
 dependencies {
