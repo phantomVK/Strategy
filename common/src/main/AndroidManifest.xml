@@ -6,11 +6,11 @@
             android:name=".component.WebViewActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label=""
-            android:theme="@style/AppThemeCommon"
+            android:theme="@style/ImmersiveTheme"
             android:windowSoftInputMode="adjustPan" />
 
         <activity
             android:name=".component.FileReaderActivity"
-            android:theme="@style/AppThemeCommon" />
+            android:theme="@style/ImmersiveTheme" />
     </application>
 </manifest>

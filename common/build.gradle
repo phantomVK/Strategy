@@ -39,7 +39,6 @@ kapt {
     arguments {
         arg('AROUTER_MODULE_NAME', project.getName())
     }
-    generateStubs = true
 }
 
 dependencies {
@@ -79,6 +78,7 @@ dependencies {
     api "org.greenrobot:eventbus:${ver.eventbus}"
     kapt "org.greenrobot:eventbus-annotation-processor:${ver.eventbus}"
 
+    testImplementation "androidx.test.ext:junit:${ver.junit}"
     androidTestImplementation "androidx.test.ext:junit:${ver.junit}"
     androidTestImplementation "androidx.test:runner:${ver.runner}"
     androidTestImplementation "androidx.test.espresso:espresso-core:${ver.espresso}"

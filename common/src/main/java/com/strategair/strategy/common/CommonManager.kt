@@ -11,6 +11,7 @@ object CommonManager {
      *
      * @param application [Application] instance
      */
+    @JvmStatic
     fun init(application: Application) {
         if (BuildConfig.DEBUG) {
             ARouter.openLog()

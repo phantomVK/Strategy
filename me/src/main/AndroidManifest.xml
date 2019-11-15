@@ -6,7 +6,7 @@
         <activity
             android:name=".view.SettingsActivity"
             android:label="@string/settings"
-            android:theme="@style/AppThemeCommon" />
+            android:theme="@style/ImmersiveTheme" />
     </application>
 
 </manifest>

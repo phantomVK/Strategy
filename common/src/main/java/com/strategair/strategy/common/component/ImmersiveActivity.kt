@@ -7,13 +7,8 @@ import android.view.View
 import android.view.WindowManager
 
 open class ImmersiveActivity : BaseActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setWindowStyle()
-    }
-
-    private fun setWindowStyle() {
         when {
             Build.VERSION.SDK_INT >= Build.VERSION_CODES.O -> {
                 window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN

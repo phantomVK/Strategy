@@ -7,6 +7,7 @@ object IconMatcher {
     /**
      * Get drawable resource id by type string.
      */
+    @JvmStatic
     fun getResId(type: String) = when (type.toLowerCase(Locale.ROOT)) {
         "doc", "docx" -> R.drawable.icon_file_doc
         "xls", "xlsx" -> R.drawable.icon_file_xls

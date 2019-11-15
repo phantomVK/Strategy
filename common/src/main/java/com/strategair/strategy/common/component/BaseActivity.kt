@@ -13,8 +13,8 @@ open class BaseActivity : SlideActivity() {
         if (!slideBackDisable()) overridePendingTransition(R.anim.slide_in_right, 0)
     }
 
-    override fun onContentChanged() {
-        super.onContentChanged()
+    override fun onPostCreate(savedInstanceState: Bundle?) {
+        super.onPostCreate(savedInstanceState)
         initToolbar()
     }
 
@@ -33,9 +33,8 @@ open class BaseActivity : SlideActivity() {
     }
 
     protected open fun initToolbar() {
-        findViewById<Toolbar>(R.id.toolbar)?.apply {
-            setSupportActionBar(this)
-            supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        }
+        val bar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(bar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 }
