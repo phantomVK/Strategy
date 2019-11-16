@@ -1,16 +1,18 @@
 package com.strategair.strategy.search.adapter
 
+import android.app.Activity
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.strategair.strategy.search.R
 import com.strategair.strategy.search.adapter.holder.SearchHolder
 import com.strategair.strategy.search.model.SearchResult
 
-class GlobalSearchAdapter : RecyclerView.Adapter<SearchHolder>() {
+class GlobalSearchAdapter(private val activity: Activity) : RecyclerView.Adapter<SearchHolder>() {
 
     private val list = ArrayList<SearchResult>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchHolder {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return SearchHolder(activity.layoutInflater.inflate(R.layout.item_global_search, parent))
     }
 
     override fun getItemCount() = list.size

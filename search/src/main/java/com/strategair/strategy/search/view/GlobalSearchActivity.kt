@@ -12,14 +12,16 @@ import kotlinx.android.synthetic.main.activity_global_search.*
 
 class GlobalSearchActivity : ImmersiveActivity() {
 
-    private val mAdapter = GlobalSearchAdapter()
+    private lateinit var mAdapter: GlobalSearchAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_global_search)
 
+        val llm = LinearLayoutManager(this).apply { isSmoothScrollbarEnabled = true }
+        mAdapter = GlobalSearchAdapter(this)
         recyclerView.adapter = mAdapter
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = llm
         recyclerView.addItemDecoration(verticalItemDecoration(this))
 
         cancel.setOnClickListener { finish() }
