@@ -35,4 +35,8 @@
         </attr>
         <attr name="drawableEnd" />
     </declare-styleable>
+
+    <declare-styleable name="BadgeView">
+        <attr name="weakDiameter" format="dimension" />
+    </declare-styleable>
 </resources>

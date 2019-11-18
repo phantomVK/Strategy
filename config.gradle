@@ -19,6 +19,7 @@ ext {
             gson             : '2.8.6',
             slideback        : '0.3.3',
             scale_image_view : '3.10.0',
+            circleimageview  : '3.0.1',
 
             tbssdk           : '43697',
             mmkv             : '1.0.23',

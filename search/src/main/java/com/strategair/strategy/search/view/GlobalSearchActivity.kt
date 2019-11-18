@@ -4,12 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.strategair.strategy.common.component.ImmersiveActivity
 import com.strategair.strategy.common.utils.verticalItemDecoration
 import com.strategair.strategy.search.R
 import com.strategair.strategy.search.adapter.GlobalSearchAdapter
 import kotlinx.android.synthetic.main.activity_global_search.*
 
+@Route(path = "/search/GlobalSearchActivity")
 class GlobalSearchActivity : ImmersiveActivity() {
 
     private lateinit var mAdapter: GlobalSearchAdapter

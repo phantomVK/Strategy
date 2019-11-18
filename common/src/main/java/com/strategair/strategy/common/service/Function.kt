@@ -5,6 +5,8 @@ import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.view.View
 import androidx.annotation.ColorInt
+import androidx.annotation.DrawableRes
+import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 
 fun Drawable.tintDrawable(colors: ColorStateList): Drawable {
@@ -17,6 +19,10 @@ fun Drawable.tintDrawable(@ColorInt color: Int): Drawable {
     val d = DrawableCompat.wrap(this.mutate())
     DrawableCompat.setTint(d, color)
     return d
+}
+
+fun Context.tintDrawable(@DrawableRes id: Int, @ColorInt color: Int): Drawable {
+    return ContextCompat.getDrawable(this, id)!!.tintDrawable(color)
 }
 
 internal fun Context.dp(value: Int) = (value * resources.displayMetrics.density).toInt()

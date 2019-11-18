@@ -9,7 +9,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.strategair.strategy.common.R
 import com.strategair.strategy.common.service.tintDrawable
@@ -25,9 +24,7 @@ class WebViewActivity : ImmersiveActivity() {
         setContentView(R.layout.activity_web_view)
 
         // Navigation icon
-        ContextCompat.getDrawable(this, R.drawable.icon_close)
-            ?.tintDrawable(Color.BLACK)
-            ?.let { toolbar.navigationIcon = it }
+        toolbar.navigationIcon = tintDrawable(R.drawable.icon_close, Color.BLACK)
 
         initWebView()
         webView.loadUrl(intent.getStringExtra(URL))
@@ -120,6 +117,7 @@ class WebViewActivity : ImmersiveActivity() {
                 if (n != null) {
                     val label = getApplicationLabel(n.packageName)
                     Log.i("WebViewClient", "Received label:${label}")
+                    // Start other application after confirmed with a dialog, not support yet.
                 }
                 true
             } else {
@@ -131,6 +129,7 @@ class WebViewActivity : ImmersiveActivity() {
     inner class DownloadListener : com.tencent.smtt.sdk.DownloadListener {
         override fun onDownloadStart(url: String, userAgent: String, contentDisposition: String,
                                      mimetype: String, contentLength: Long) {
+            // Download file by other browser, not support yet.
         }
     }
 }

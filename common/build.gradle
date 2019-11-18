@@ -74,6 +74,7 @@ dependencies {
 
     api "com.phantomvk.slideback:slideback:${ver.slideback}"
     api "com.davemorrissey.labs:subsampling-scale-image-view:${ver.scale_image_view}"
+    api "de.hdodenhof:circleimageview:${ver.circleimageview}"
 
     api "org.greenrobot:eventbus:${ver.eventbus}"
     kapt "org.greenrobot:eventbus-annotation-processor:${ver.eventbus}"
