@@ -46,7 +46,7 @@ class BadgeView
         if (number < 0) {
             size = weakDiameter
             toDrawable = oval
-        } else if (number < 1 && number < 10) {
+        } else if (number <= 1 && number < 10) {
             size = WRAP_CONTENT
             toDrawable = oval
         } else {

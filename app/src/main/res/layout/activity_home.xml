@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/ToolbarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/group"
+        android:layout_below="@id/toolbar"
+        android:overScrollMode="never" />
+
+    <com.strategair.strategy.widget.TabGroup
+        android:id="@+id/group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#fcfcfc"
+        android:paddingTop="4dp"
+        android:paddingBottom="2dp">
+
+        <com.strategair.strategy.widget.TabView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:colorSelected="@color/colorTheme"
+            app:imageNormal="@drawable/ic_launcher_foreground"
+            app:imageSelected="@drawable/ic_launcher_background"
+            app:rectSize="30dp"
+            app:title="@string/skip" />
+
+        <com.strategair.strategy.widget.TabView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:colorSelected="@color/colorTheme"
+            app:imageNormal="@drawable/ic_launcher_foreground"
+            app:imageSelected="@drawable/ic_launcher_background"
+            app:rectSize="30dp"
+            app:title="@string/skip" />
+
+        <com.strategair.strategy.widget.TabView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:colorSelected="@color/colorTheme"
+            app:imageNormal="@drawable/ic_launcher_foreground"
+            app:imageSelected="@drawable/ic_launcher_background"
+            app:rectSize="30dp"
+            app:title="@string/skip" />
+
+        <com.strategair.strategy.widget.TabView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:colorSelected="@color/colorTheme"
+            app:imageNormal="@drawable/ic_launcher_foreground"
+            app:imageSelected="@drawable/ic_launcher_background"
+            app:rectSize="30dp"
+            app:title="@string/skip" />
+    </com.strategair.strategy.widget.TabGroup>
+</RelativeLayout>

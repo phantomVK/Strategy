@@ -25,12 +25,12 @@ fun Context.tintDrawable(@DrawableRes id: Int, @ColorInt color: Int): Drawable {
     return ContextCompat.getDrawable(this, id)!!.tintDrawable(color)
 }
 
-internal fun Context.dp(value: Int) = (value * resources.displayMetrics.density).toInt()
-internal fun Context.dp(value: Float) = value * resources.displayMetrics.density
-internal fun Context.sp(value: Int) = (value * resources.displayMetrics.scaledDensity).toInt()
-internal fun Context.sp(value: Float) = value * resources.displayMetrics.scaledDensity
+fun Context.dp(value: Int) = (value * resources.displayMetrics.density).toInt()
+fun Context.dp(value: Float) = value * resources.displayMetrics.density
+fun Context.sp(value: Int) = (value * resources.displayMetrics.scaledDensity).toInt()
+fun Context.sp(value: Float) = value * resources.displayMetrics.scaledDensity
 
-internal fun View.dp(value: Int) = (value * resources.displayMetrics.density).toInt()
-internal fun View.dp(value: Float) = value * resources.displayMetrics.density
-internal fun View.sp(value: Int) = (value * resources.displayMetrics.scaledDensity).toInt()
-internal fun View.sp(value: Float) = value * resources.displayMetrics.scaledDensity
+fun View.dp(value: Int) = (value * resources.displayMetrics.density).toInt()
+fun View.dp(value: Float) = value * resources.displayMetrics.density
+fun View.sp(value: Int) = (value * resources.displayMetrics.scaledDensity).toInt()
+fun View.sp(value: Float) = value * resources.displayMetrics.scaledDensity

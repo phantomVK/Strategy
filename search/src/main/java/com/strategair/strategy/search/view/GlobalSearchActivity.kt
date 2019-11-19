@@ -36,6 +36,6 @@ class GlobalSearchActivity : ImmersiveActivity() {
         }
     }
 
-    // Override super.initToolbar()
+    // Override super.initToolbar() to empty implementation.
     override fun initToolbar() {}
 }
