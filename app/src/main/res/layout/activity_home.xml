@@ -17,9 +17,14 @@
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/group"
+        android:layout_above="@+id/divider"
         android:layout_below="@id/toolbar"
         android:overScrollMode="never" />
+
+    <View
+        android:id="@+id/divider"
+        style="@style/DividerStyle"
+        android:layout_above="@+id/group" />
 
     <com.strategair.strategy.widget.TabGroup
         android:id="@+id/group"
@@ -35,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:colorSelected="@color/colorTheme"
-            app:imageNormal="@drawable/ic_launcher_foreground"
+            app:imageNormal="@drawable/icon_file_jpg"
             app:imageSelected="@drawable/ic_launcher_background"
             app:rectSize="30dp"
             app:title="@string/skip" />
@@ -45,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:colorSelected="@color/colorTheme"
-            app:imageNormal="@drawable/ic_launcher_foreground"
+            app:imageNormal="@drawable/icon_file_jpg"
             app:imageSelected="@drawable/ic_launcher_background"
             app:rectSize="30dp"
             app:title="@string/skip" />
@@ -55,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:colorSelected="@color/colorTheme"
-            app:imageNormal="@drawable/ic_launcher_foreground"
+            app:imageNormal="@drawable/icon_file_jpg"
             app:imageSelected="@drawable/ic_launcher_background"
             app:rectSize="30dp"
             app:title="@string/skip" />
@@ -65,7 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:colorSelected="@color/colorTheme"
-            app:imageNormal="@drawable/ic_launcher_foreground"
+            app:imageNormal="@drawable/icon_file_jpg"
             app:imageSelected="@drawable/ic_launcher_background"
             app:rectSize="30dp"
             app:title="@string/skip" />

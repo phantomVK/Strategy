@@ -13,6 +13,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     companion object {
+        @JvmStatic
         fun startActivity(activity: AppCompatActivity) {
             Intent(activity, LoginActivity::class.java)
                 .run { activity.startActivity(this) }

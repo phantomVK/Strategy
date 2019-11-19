@@ -7,6 +7,26 @@
             android:name=".view.SettingsActivity"
             android:label="@string/settings"
             android:theme="@style/ImmersiveTheme" />
+
+        <activity
+            android:name=".view.GeneralActivity"
+            android:label="@string/general"
+            android:theme="@style/ImmersiveTheme" />
+
+        <activity
+            android:name=".view.PrivacyActivity"
+            android:label="@string/privacy"
+            android:theme="@style/ImmersiveTheme" />
+
+        <activity
+            android:name=".view.FeedbackActivity"
+            android:label="@string/help_and_feedback"
+            android:theme="@style/ImmersiveTheme" />
+
+        <activity
+            android:name=".view.AboutActivity"
+            android:label="@string/about_us"
+            android:theme="@style/ImmersiveTheme" />
     </application>
 
 </manifest>

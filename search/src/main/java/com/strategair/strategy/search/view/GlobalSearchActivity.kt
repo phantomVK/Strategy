@@ -29,13 +29,14 @@ class GlobalSearchActivity : ImmersiveActivity() {
         cancel.setOnClickListener { finish() }
     }
 
+    // Override super.initToolbar() to empty implementation.
+    override fun initToolbar() {}
+
     companion object {
+        @JvmStatic
         fun startActivity(activity: AppCompatActivity) {
             Intent(activity, GlobalSearchActivity::class.java)
                 .run { activity.startActivity(this) }
         }
     }
-
-    // Override super.initToolbar() to empty implementation.
-    override fun initToolbar() {}
 }

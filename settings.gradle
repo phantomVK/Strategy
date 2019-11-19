@@ -1,2 +1,2 @@
-include ':app', ':common', ':search', ':me'
+include ':app', ':common', ':search', ':me', ':home'
 rootProject.name='Strategy'

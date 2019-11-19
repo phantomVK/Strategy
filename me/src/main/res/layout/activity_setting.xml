@@ -55,7 +55,7 @@
                 app:text="@string/about_us" />
 
             <com.strategair.strategy.common.widget.ClickableLayout
-                android:id="@+id/help"
+                android:id="@+id/feedback"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:alignTextStart="true"

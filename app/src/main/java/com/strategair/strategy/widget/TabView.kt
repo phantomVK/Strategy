@@ -12,8 +12,8 @@ import com.strategair.strategy.common.utils.ArgbEvaluator.evaluate
 import kotlinx.android.synthetic.main.layout_item_tab.view.*
 
 class TabView @JvmOverloads
-constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0)
-    : RelativeLayout(context, attrs, defStyleAttr) {
+constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
+        RelativeLayout(context, attrs, defStyleAttr) {
 
     private var colorNormal = 0
     private var colorSelected = 0
@@ -21,13 +21,13 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
     init {
         View.inflate(context, R.layout.layout_item_tab, this)
 
-        val a = context.obtainStyledAttributes(attrs, R.styleable.TabLayout)
-        val foreground = a.getDrawable(R.styleable.TabLayout_imageNormal)!!
-        val background = a.getDrawable(R.styleable.TabLayout_imageSelected)!!
-        val rectSize = a.getDimensionPixelSize(R.styleable.TabLayout_rectSize, dp(30))
-        val title = a.getString(R.styleable.TabLayout_title)
-        colorNormal = a.getColor(R.styleable.TabLayout_colorNormal, Color.BLACK)
-        colorSelected = a.getColor(R.styleable.TabLayout_colorSelected, Color.GRAY)
+        val a = context.obtainStyledAttributes(attrs, R.styleable.TabView)
+        val foreground = a.getDrawable(R.styleable.TabView_imageNormal)!!
+        val background = a.getDrawable(R.styleable.TabView_imageSelected)!!
+        val rectSize = a.getDimensionPixelSize(R.styleable.TabView_rectSize, dp(30))
+        val title = a.getString(R.styleable.TabView_title)
+        colorNormal = a.getColor(R.styleable.TabView_colorNormal, Color.BLACK)
+        colorSelected = a.getColor(R.styleable.TabView_colorSelected, Color.GRAY)
         a.recycle()
 
         subtitle.text = title

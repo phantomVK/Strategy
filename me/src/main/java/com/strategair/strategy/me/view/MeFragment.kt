@@ -6,9 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import com.strategair.strategy.common.component.BaseFragment
 import com.strategair.strategy.me.R
+import kotlinx.android.synthetic.main.fragment_me.*
 
 class MeFragment : BaseFragment() {
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_me, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        settings.setOnClickListener { SettingsActivity.startActivity(context!!) }
     }
 }

@@ -13,6 +13,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     companion object {
+        @JvmStatic
         fun startActivity(activity: AppCompatActivity) {
             Intent(activity, RegisterActivity::class.java)
                 .run { activity.startActivity(this) }
