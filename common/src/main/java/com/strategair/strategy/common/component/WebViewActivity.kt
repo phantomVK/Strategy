@@ -16,6 +16,7 @@ import com.strategair.strategy.common.utils.getApplicationLabel
 import com.tencent.smtt.sdk.WebSettings
 import com.tencent.smtt.sdk.WebView
 import kotlinx.android.synthetic.main.activity_web_view.*
+import kotlinx.android.synthetic.main.view_toolbar.*
 
 class WebViewActivity : ImmersiveActivity() {
 

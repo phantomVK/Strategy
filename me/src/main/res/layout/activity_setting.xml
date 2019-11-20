@@ -9,9 +9,7 @@
     android:orientation="vertical"
     tools:context=".view.SettingsActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        style="@style/ToolbarStyle" />
+    <include layout="@layout/view_toolbar" />
 
     <ScrollView
         android:layout_width="match_parent"

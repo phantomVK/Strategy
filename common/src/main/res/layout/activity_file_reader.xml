@@ -8,8 +8,6 @@
     android:orientation="vertical"
     tools:context=".component.FileReaderActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        style="@style/ToolbarStyle" />
+    <include layout="@layout/view_toolbar" />
 
 </LinearLayout>

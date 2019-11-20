@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <style name="AppThemeCommon" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -15,17 +15,6 @@
     <style name="WindowNoAnimStyle" parent="@android:style/Animation.Translucent">
         <item name="android:windowEnterAnimation">@null</item>
         <item name="android:windowExitAnimation">@null</item>
-    </style>
-
-    <style name="ToolbarStyle" parent="Widget.AppCompat.Toolbar">
-        <item name="android:theme">@style/ImmersiveTheme</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@android:color/white</item>
-        <item name="contentInsetStartWithNavigation">0dp</item>
-        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
-        <item name="android:fitsSystemWindows">true</item>
-        <item name="android:elevation" tools:ignore="NewApi">1dp</item>
     </style>
 
     <style name="TabLayout" parent="Base.Widget.Design.TabLayout">

@@ -49,6 +49,7 @@ dependencies {
     api "androidx.constraintlayout:constraintlayout:${ver.constraintlayout}"
     api "androidx.core:core-ktx:${ver.androidx}"
     api "androidx.recyclerview:recyclerview:${ver.recyclerview}"
+
     api "com.google.android.material:material:${ver.material}"
     api "com.google.code.gson:gson:${ver.gson}"
     kapt "android.arch.persistence.room:compiler:${ver.room_compiler}"

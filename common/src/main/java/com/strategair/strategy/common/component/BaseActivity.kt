@@ -2,7 +2,6 @@ package com.strategair.strategy.common.component
 
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.appcompat.widget.Toolbar
 import com.phantomvk.slideback.SlideActivity
 import com.strategair.strategy.common.R
 
@@ -33,8 +32,9 @@ open class BaseActivity : SlideActivity() {
     }
 
     protected open fun initToolbar() {
-        val bar = findViewById<Toolbar>(R.id.toolbar)
-        setSupportActionBar(bar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        setSupportActionBar(findViewById(R.id.toolbar))
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+        }
     }
 }
