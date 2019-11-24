@@ -39,4 +39,13 @@
     <declare-styleable name="BadgeView">
         <attr name="weakDiameter" format="dimension" />
     </declare-styleable>
+
+    <declare-styleable name="TabView">
+        <attr name="imageNormal" format="reference" />
+        <attr name="imageSelected" format="reference" />
+        <attr name="title" format="reference|string" />
+        <attr name="rectSize" format="dimension" />
+        <attr name="colorNormal" format="reference|color" />
+        <attr name="colorSelected" format="reference|color" />
+    </declare-styleable>
 </resources>

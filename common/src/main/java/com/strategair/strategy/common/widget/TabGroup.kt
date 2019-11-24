@@ -1,4 +1,4 @@
-package com.strategair.strategy.widget
+package com.strategair.strategy.common.widget
 
 import android.content.Context
 import android.util.AttributeSet

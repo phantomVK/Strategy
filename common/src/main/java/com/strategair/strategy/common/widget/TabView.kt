@@ -1,4 +1,4 @@
-package com.strategair.strategy.widget
+package com.strategair.strategy.common.widget
 
 import android.content.Context
 import android.graphics.Color
@@ -6,7 +6,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.RelativeLayout
 import androidx.annotation.FloatRange
-import com.strategair.strategy.R
+import com.strategair.strategy.common.R
 import com.strategair.strategy.common.service.dp
 import com.strategair.strategy.common.utils.ArgbEvaluator.evaluate
 import kotlinx.android.synthetic.main.layout_item_tab.view.*

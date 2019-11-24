@@ -21,7 +21,7 @@
         style="@style/DividerStyle"
         android:layout_above="@+id/group" />
 
-    <com.strategair.strategy.widget.TabGroup
+    <com.strategair.strategy.common.widget.TabGroup
         android:id="@+id/group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
         android:paddingTop="4dp"
         android:paddingBottom="2dp">
 
-        <com.strategair.strategy.widget.TabView
+        <com.strategair.strategy.common.widget.TabView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -40,7 +40,7 @@
             app:rectSize="30dp"
             app:title="@string/skip" />
 
-        <com.strategair.strategy.widget.TabView
+        <com.strategair.strategy.common.widget.TabView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -50,7 +50,7 @@
             app:rectSize="30dp"
             app:title="@string/skip" />
 
-        <com.strategair.strategy.widget.TabView
+        <com.strategair.strategy.common.widget.TabView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -60,7 +60,7 @@
             app:rectSize="30dp"
             app:title="@string/skip" />
 
-        <com.strategair.strategy.widget.TabView
+        <com.strategair.strategy.common.widget.TabView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -69,5 +69,5 @@
             app:imageSelected="@drawable/ic_launcher_background"
             app:rectSize="30dp"
             app:title="@string/skip" />
-    </com.strategair.strategy.widget.TabGroup>
+    </com.strategair.strategy.common.widget.TabGroup>
 </RelativeLayout>

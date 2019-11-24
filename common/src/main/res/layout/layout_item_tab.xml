@@ -4,7 +4,7 @@
     android:layout_gravity="center"
     android:gravity="center">
 
-    <com.strategair.strategy.widget.TabImage
+    <com.strategair.strategy.common.widget.TabImage
         android:id="@+id/image"
         android:layout_width="30dp"
         android:layout_height="30dp"

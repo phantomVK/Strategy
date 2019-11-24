@@ -5,7 +5,6 @@
         <activity
             android:name=".component.WebViewActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label=""
             android:theme="@style/ImmersiveTheme"
             android:windowSoftInputMode="adjustPan" />
 

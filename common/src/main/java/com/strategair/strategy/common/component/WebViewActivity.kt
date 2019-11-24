@@ -82,6 +82,7 @@ class WebViewActivity : ImmersiveActivity() {
     companion object {
         private const val URL = "URL"
 
+        @JvmStatic
         fun startActivity(context: Context, url: String) {
             Intent(context, WebViewActivity::class.java)
                 .putExtra(URL, url)
@@ -128,8 +129,10 @@ class WebViewActivity : ImmersiveActivity() {
     }
 
     inner class DownloadListener : com.tencent.smtt.sdk.DownloadListener {
-        override fun onDownloadStart(url: String, userAgent: String, contentDisposition: String,
-                                     mimetype: String, contentLength: Long) {
+        override fun onDownloadStart(
+            url: String, userAgent: String, contentDisposition: String,
+            mimetype: String, contentLength: Long
+        ) {
             // Download file by other browser, not support yet.
         }
     }

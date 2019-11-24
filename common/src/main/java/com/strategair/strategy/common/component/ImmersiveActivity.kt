@@ -7,6 +7,7 @@ import android.view.View
 import android.view.WindowManager
 
 open class ImmersiveActivity : BaseActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         when {
