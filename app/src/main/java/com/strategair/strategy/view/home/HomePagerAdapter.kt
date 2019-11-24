@@ -7,7 +7,7 @@ import java.util.*
 
 class HomePagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
-    private val fragments = ArrayList<Fragment>(4) // Default capacity of ArrayList is 4.
+    private val fragments = ArrayList<Fragment>(4)
 
     fun addFragment(fragment: Fragment) {
         fragments.add(fragment)
