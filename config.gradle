@@ -10,14 +10,13 @@ ext {
 
     dependencies = [
             androidx         : '1.1.0',
-            recyclerview     : '1.0.0',
             constraintlayout : '1.1.3',
             material         : '1.0.0',
             room_compiler    : '1.1.1',
 
             glide            : '4.10.0',
             gson             : '2.8.6',
-            slideback        : '0.3.3',
+            slideback        : '0.3.4',
             scale_image_view : '3.10.0',
             circleimageview  : '3.0.1',
 
