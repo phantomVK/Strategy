@@ -8,4 +8,7 @@
     <string name="help_and_feedback">帮助与反馈</string>
     <string name="switch_account">切换账号</string>
     <string name="logout">退出登录</string>
+
+    <!--  AboutActivity  -->
+    <string name="version">版本号</string>
 </resources>

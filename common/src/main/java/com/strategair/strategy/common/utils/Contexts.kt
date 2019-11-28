@@ -33,3 +33,10 @@ inline fun Context.widthPixels() = resources.displayMetrics.widthPixels
  * The absolute height of the available display size in pixels.
  */
 inline fun Context.heightPixels() = resources.displayMetrics.heightPixels
+
+/**
+ * The version name of this package, as specified by the &lt;manifest&gt;
+ * tag's {@link android.R.styleable#AndroidManifest_versionName versionName}
+ * attribute.
+ */
+inline fun Context.versionName() = packageManager.getPackageInfo(packageName, 0).versionName

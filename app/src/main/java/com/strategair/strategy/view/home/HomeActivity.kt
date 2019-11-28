@@ -23,17 +23,17 @@ class HomeActivity : BaseActivity() {
         group.setViewPager(pager)
     }
 
-    companion object {
-        fun startActivity(activity: AppCompatActivity) {
-            Intent(activity, HomeActivity::class.java)
-                .run { activity.startActivity(this) }
-        }
-    }
-
     override fun slideBackDisable() = true
 
     override fun initToolbar() {
         val bar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(bar)
+    }
+
+    companion object {
+        fun startActivity(activity: AppCompatActivity) {
+            Intent(activity, HomeActivity::class.java)
+                .run { activity.startActivity(this) }
+        }
     }
 }

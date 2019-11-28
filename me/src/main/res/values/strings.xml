@@ -8,4 +8,7 @@
     <string name="help_and_feedback">Help and feedback</string>
     <string name="switch_account">Switch account</string>
     <string name="logout">Logout</string>
+
+    <!--  AboutActivity  -->
+    <string name="version">Version</string>
 </resources>

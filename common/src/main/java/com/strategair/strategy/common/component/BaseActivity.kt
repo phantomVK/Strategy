@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.view.MenuItem
 import com.phantomvk.slideback.SlideActivity
 import com.strategair.strategy.common.R
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.cancel
 
-open class BaseActivity : SlideActivity() {
+abstract class BaseActivity : SlideActivity(), CoroutineScope by MainScope() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,6 +18,11 @@ open class BaseActivity : SlideActivity() {
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
         initToolbar()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        cancel()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
