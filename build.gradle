@@ -2,7 +2,7 @@
 
 buildscript {
     apply from: "config.gradle"
-    ext.gradle_version = '3.5.2'
+    ext.gradle_version = '3.5.3'
     ext.kotlin_version = '1.3.61'
     ext.eventbus_version = '1.8'
     ext.greendao = '3.2.2'

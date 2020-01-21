@@ -8,7 +8,7 @@ import android.widget.RelativeLayout
 import androidx.annotation.FloatRange
 import com.strategair.strategy.common.R
 import com.strategair.strategy.common.service.dp
-import com.strategair.strategy.common.utils.ArgbEvaluator.evaluate
+import com.strategair.strategy.common.utils.evaluate
 import kotlinx.android.synthetic.main.layout_item_tab.view.*
 
 class TabView @JvmOverloads
