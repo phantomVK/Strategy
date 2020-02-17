@@ -28,6 +28,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
 }
 
 kapt {
@@ -49,7 +52,7 @@ dependencies {
     api "androidx.core:core-ktx:${ver.androidx}"
     api "androidx.appcompat:appcompat:${ver.appcompat}"
     api "androidx.constraintlayout:constraintlayout:${ver.constraintlayout}"
-    api 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    api "androidx.lifecycle:lifecycle-viewmodel-ktx:${ver.viewmodel}"
     api "androidx.recyclerview:recyclerview:${ver.recyclerview}"
 
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
