@@ -46,11 +46,11 @@ dependencies {
     def ver = rootProject.ext.dependencies
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    api "androidx.appcompat:appcompat:${ver.androidx}"
-    api "androidx.constraintlayout:constraintlayout:${ver.constraintlayout}"
     api "androidx.core:core-ktx:${ver.androidx}"
-    api "androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0"
-    api "androidx.recyclerview:recyclerview:${ver.androidx}"
+    api "androidx.appcompat:appcompat:${ver.appcompat}"
+    api "androidx.constraintlayout:constraintlayout:${ver.constraintlayout}"
+    api 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    api "androidx.recyclerview:recyclerview:${ver.recyclerview}"
 
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:${ver.coroutine}"

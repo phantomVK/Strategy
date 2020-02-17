@@ -89,6 +89,8 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0) : 
     }
 
 //    private fun inEditModePreview() {
+//        if (!isInEditMode) return
+//
 //        setBackgroundColor(mBackgroundPressed)
 //        mOldIndex = 7
 //        mCharacters.apply {
